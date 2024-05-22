@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import PrivateRoute from "./components/privateRoute/privateRoute";
+import Header from "./components/header/header";
+import {useEffect} from "react";
+import {initUB} from "./services/userbase";
+import AccountPage from "./pages/account";
+import FourZeroFour from "./pages/fourZeroFour";
 
 function App() {
+  useEffect(() => {
+    initUB();
+  }, [])
+
+  console.log("render app")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>}/>
+          <Route path="/account" element={<PrivateRoute><AccountPage/></PrivateRoute>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path={'*'} element={<FourZeroFour/>}/>
+        </Routes>
+      </Router>
+    </>
   );
 }
 

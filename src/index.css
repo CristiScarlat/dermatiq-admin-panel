@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  min-height: 100vh;
+}
+
+.max-w-40 {
+  max-width: 40rem;
+}
+
+.max-w-60 {
+  max-width: 60rem;
+}
+
+.custom-box-shadow {
+  box-shadow: 1px 1px 4px 1px #000000;
+}
+
+.home-event-card {
+  border: 1px solid #504f4f;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.accordion {
+  --bs-accordion-btn-bg: var(--bs-dark);
+  --bs-accordion-active-bg: #333333;
+  --bs-accordion-btn-color: var(--bs-secondary);
+  --bs-accordion-active-color: #fafafa;
 }
